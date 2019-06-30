@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeerListComponent implements OnInit {
 
-  constructor() { }
+  numbers;
+  constructor() {
+    this.numbers = Array(6).fill(0).map((x,i)=>i);
+   }
 
   ngOnInit() {
   }
