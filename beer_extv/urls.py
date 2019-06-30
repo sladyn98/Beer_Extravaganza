@@ -33,5 +33,4 @@ from django.contrib import  admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^beer_platform/', include('beer_extv.beer_platform.urls')),
 ]
