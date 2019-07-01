@@ -15,19 +15,17 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(){
-    this.register = {
-      username: '',
-      email: '',
-      password:'',
-    };
+    
+  }
   
+  loginUser(event) {
+   event.preventDefault()
+   const target = event.target
+   const username = target.querySelector('#username').value
+   const email = target.querySelector('#email').value
+   const password = target.querySelector("#password").value
+   this.userService.loginUser(username,email,password)
   }
-  registerUser() {
-    this.userService.registerUser(this.register).subscribe(
-      response => {
-        alert("User has been created")
-      },
-      error => console.log('error', error)
-    );
-  }
+
+
 }

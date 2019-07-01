@@ -14,11 +14,11 @@
     <div class="container">
       <h1>Login to access to<br />your account</h1>
   
-      <div class="login-form">
+      <div class="login-form" (submit)="loginUser($event)">
         <form action="">
-          <input [(ngModel)] = "register.username" name ="first" type="username" placeholder="UserName">
-          <input [(ngModel)] = "register.email" name="email" type="email" placeholder="E-mail Address">
-          <input [(ngModel)] = "register.password" name="password" type="password" placeholder="Password">
+          <input  id="username" type="username" placeholder="UserName" >
+          <input  id="email" type="email" placeholder="E-mail Address" >
+          <input  id="password" type="password" placeholder="Password" >
 
           <div class="remember-form">
             <input type="checkbox">
@@ -27,7 +27,8 @@
           <div class="forget-pass">
           </div>
 
-          <button (click) = "registerUser()" type="submit">LOG-IN</button>
+          <!-- <button type="submit">LOG-IN</button> -->
+          <a routerLink='/beer-list'><button type="submit">LOG-IN</button></a>
 
         </form>
       </div>

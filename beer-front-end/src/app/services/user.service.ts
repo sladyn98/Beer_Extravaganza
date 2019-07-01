@@ -7,7 +7,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(userData): Observable<any> {
-    return this.http.post("http://127.0.0.1:8000/beer_platform/users/", userData)
+
+  loginUser(username, email, password){
+     return this.http.post('http://127.0.0.1:8000/user_list/users/',{
+      username,
+      email,
+      password
+     }).subscribe(data => {
+       console.log(data, "This is what we got from the server")
+     })
   }
+
 }
