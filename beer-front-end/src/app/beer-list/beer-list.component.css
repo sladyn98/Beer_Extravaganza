@@ -116,7 +116,6 @@ body{
   font-style: italic;
 }
 .card-text a.read-more:hover{
-  background-color:;
   color: #FFFFFF;
   transform: scale(1.15)
 }
@@ -138,6 +137,13 @@ footer p a{
   letter-spacing: .75px;
   text-decoration: none;
 }
+
+.button1 {
+  display:flex;
+  justify-content:flex-end;
+  align-items:left; 
+} 
+ 
 /* For the ratings of the beers */
 
 .rating-static {

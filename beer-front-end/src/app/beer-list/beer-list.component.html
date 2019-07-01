@@ -9,7 +9,8 @@
   <div class="header-right">
     <a class="home" href="#home">Home</a>
     <a class="active" href="#home">BeerWorld</a>
-    <a class="home" href="#home">Add a Beer</a>
+    <a class="home" href="/beer_create">Add a Beer</a>
+
     <a href="#about">Logout</a>
   </div>
 </div>
@@ -24,15 +25,27 @@
           <img src= {{data.imageUrl}} alt="">
         </div>
         <div class="card-text">
-          <h2>Brewer : {{data.brewer}}</h2>
+          <h2 id = "brewer" >Brewer : {{data.brewer}}</h2>
           <h2>Price :  {{data.price}} USD</h2>
           <br>
           <span class="rating-static rating-{{data.rating*10}}"></span>
           <a class="read-more">Read more</a>
           <br>
-          <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-thumbs-up"></span> Like
+          <div >
+          <button (click) = "recordUpVote($event,data)" type="button" class="upvote btn1 btn-default btn-sm"  >
+              <span class="glyphicon glyphicon-thumbs-up"></span> Upvotes
+              <p id="upvote">{{data.upVotes}}</p>
+
             </button>
+            <button (click) = "recordDownVote($event,data)" type="button" class="downvote btn2 btn-default btn-sm" >
+                <span class="glyphicon glyphicon-thumbs-up"></span> Downvotes
+                <p >{{data.downVotes}}</p>
+
+              </button> 
+          </div>
+
+
+
         </div>
     </div>
     </div> 

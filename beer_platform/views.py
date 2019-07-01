@@ -1,6 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework import generics
+from django.shortcuts import get_object_or_404
+from django.forms.models import model_to_dict
+
 
 from .models import BeerCard
 from .serializers import BeerCardSerializer
@@ -22,3 +26,40 @@ class BeerList(APIView):
 
     def post(self):
         pass
+
+
+class BeerCardUpvoteView(APIView):
+
+    # def get(self, request,pk,votes):
+    #     model = get_object_or_404(BeerCard, pk=pk)
+    #     serializer = BeerCardSerializer(model)
+    #     return Response(serializer.data)
+
+    def post(self, request, pk):
+        model = get_object_or_404(BeerCard, pk=pk)
+        actual_votes = BeerCardSerializer(model).data["upVotes"]
+        data = {"upVotes": str(actual_votes + 1)}
+        serializer = BeerCardSerializer(model, data=data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+            # return a meaningful error response
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# PostAPI
+class BeerCardDownvoteView(APIView):
+
+    def post(self,request,pk):
+        model = get_object_or_404(BeerCard, pk=pk)
+        actual_votes = BeerCardSerializer(model).data["downVotes"]
+        data = {"downVotes": str(actual_votes + 1)}
+        serializer = BeerCardSerializer(model, data=data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+            # return a meaningful error response
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

@@ -14,7 +14,7 @@ export class UserService {
       email,
       password
      }).subscribe(data => {
-       console.log(data, "This is what we got from the server")
+       console.log(data, "This is what we are posting on the server")
      })
   }
 

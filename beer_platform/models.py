@@ -17,8 +17,8 @@ class BeerCard(models.Model):
 
 
 def __str__(self):
-    return '%s %s %s %s %s %s %s %s' % (self.brewer, self.price, self.rating, self.servingType, self.flavourDesc,
-                                        self.upVotes, self.downVotes, self.imageUrl)
+    return self.upVotes
+
 
 
 
