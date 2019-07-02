@@ -116,7 +116,7 @@ body{
   font-style: italic;
 }
 .card-text a.read-more:hover{
-  color: #FFFFFF;
+  color: ;
   transform: scale(1.15)
 }
 footer{
@@ -220,3 +220,40 @@ footer p a{
     float: none;
   }
 }
+
+/* This css is for the fab */
+
+body
+{
+  margin:0;
+  padding:0;
+}
+
+.fab
+{
+  width: 85px;
+    height: 85px;
+    background-color: #A3E4D7;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 100%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.fab:before {
+  content:"+";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #fff;
+    font-size: 4rem;
+    position: absolute;
+    top: 15%;
+    left: 37%;
+}
+
+
+
+
+

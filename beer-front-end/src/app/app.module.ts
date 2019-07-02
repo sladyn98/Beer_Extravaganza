@@ -10,13 +10,15 @@ import { BeerCreateComponent } from './beer-create/beer-create.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { BeerComponent } from './beer/beer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BeerCreateComponent,
     BeerListComponent,
-    LoginComponent
+    LoginComponent,
+    BeerComponent
   ],
   imports: [
     BrowserModule,

@@ -29,13 +29,12 @@
           <h2>Price :  {{data.price}} USD</h2>
           <br>
           <span class="rating-static rating-{{data.rating*10}}"></span>
-          <a class="read-more">Read more</a>
+          <a (click) = "onRead(data)" class="read-more">Read more</a>
           <br>
           <div >
           <button (click) = "recordUpVote($event,data)" type="button" class="upvote btn1 btn-default btn-sm"  >
               <span class="glyphicon glyphicon-thumbs-up"></span> Upvotes
               <p id="upvote">{{data.upVotes}}</p>
-
             </button>
             <button (click) = "recordDownVote($event,data)" type="button" class="downvote btn2 btn-default btn-sm" >
                 <span class="glyphicon glyphicon-thumbs-up"></span> Downvotes
@@ -44,11 +43,18 @@
               </button> 
           </div>
 
-
-
         </div>
+        
     </div>
+
+    
+          <!-- This is for the FAB -->
+          <button (click) = "createBeerRoute()" class="fab fab-content"></button>
     </div> 
+
+
+
+
     <footer>
       <p>Made with Beer<span>&hearts;</span> by <a href="sladynnunes98@gmail.com">Luciana Arévalo</a> </p>
     </footer>

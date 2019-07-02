@@ -30,11 +30,6 @@ class BeerList(APIView):
 
 class BeerCardUpvoteView(APIView):
 
-    # def get(self, request,pk,votes):
-    #     model = get_object_or_404(BeerCard, pk=pk)
-    #     serializer = BeerCardSerializer(model)
-    #     return Response(serializer.data)
-
     def post(self, request, pk):
         model = get_object_or_404(BeerCard, pk=pk)
         actual_votes = BeerCardSerializer(model).data["upVotes"]
@@ -63,3 +58,10 @@ class BeerCardDownvoteView(APIView):
             # return a meaningful error response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+class IndividualBeerView(APIView):
+
+    def post(self, request,pk):
+        model = get_object_or_404(BeerCard, pk=pk)
+        serializer = BeerCardSerializer(model)
+        return Response(serializer.data)

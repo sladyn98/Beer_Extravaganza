@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BeerService } from '../services/beer.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-beer-list',
@@ -15,12 +17,9 @@ export class BeerListComponent implements OnInit {
 
    private apiUrl = "http://127.0.0.1:8000/beer_list"
    data: {};
-   value;
-   upvotess;
-   val;
-   upVoteArray:{};
 
-  constructor(private http: HttpClient,private beerService:BeerService) {
+  constructor(private http: HttpClient,private beerService:BeerService,
+    private router: Router) {
     this.getBeerData()
    }
 
@@ -48,6 +47,16 @@ export class BeerListComponent implements OnInit {
     const target = event.target
     this.beerService.downVoteBeerCard(item.pk)
     location.reload();
+  }
+
+  onRead(beerData){
+    console.log("I want to read more",beerData.pk)
+    this.router.navigate(['beer',beerData.pk]);
+  }
+
+  createBeerRoute(){
+    console.log("I want to create a beer")
+    this.router.navigate(['beer-create']);
   }
 
 

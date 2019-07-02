@@ -1,0 +1,97 @@
+
+<div class="header">
+        <a href="#default" class="logo"> BeerCenter</a>
+        <div class="header-right">
+          <a class="home" href="#home">Home</a>
+          <a class="active" href="#home">BeerWorld</a>
+          <a class="home" href="/beer_create">Add a Beer</a>
+      
+          <a href="#about">Logout</a>
+        </div>
+      </div>
+      
+<div id="container">	
+	
+    <!-- Start	Product details -->
+        <div class="product-details">
+            
+            <!-- 	Product Name -->
+        <h1>{{beerData.brewer}}</h1>
+    <!-- 		<span class="hint new">New</span> -->
+    <!-- 		<span class="hint free-shipping">Free Shipping</span> -->
+    <!-- 		the Product rating -->
+        <span class="hint-star star">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+        </span>
+            
+        
+    <!-- The most important information about the product -->
+    <div>
+            <p class="information">"{{beerData.flavourDesc}}"</p>
+            <p class="information">ServingType : "{{beerData.servingType}}"</p>
+            <p class="information">Rating : "{{beerData.rating}}"</p>
+            <p class="information">Upvotes : "{{beerData.upVotes}}"</p>
+            <p class="information">Downvotes : "{{beerData.downVotes}}"</p>
+
+    </div>      
+            
+    
+            
+            
+    <!-- 		Control -->
+    <div class="control">
+        
+    <!-- Start Button buying -->
+        <button class="btn">
+    <!-- 		the Price -->
+         <span class="price">{{beerData.price}} $</span>
+    <!-- 		shopping cart icon-->
+       
+    <!-- Beer Rating -->
+       <!-- <span class="rating-static rating-{{data.rating*10}}"></span> -->
+       <span class="buy">Highly popular</span>
+     </button>
+        <!-- End Button buying -->
+        
+    </div>
+                
+
+    </div>
+        
+    <!-- 	End	Product details   -->
+        
+        
+   
+    <!-- 	Start product image & Information -->
+        
+    <div class="product-image">
+        
+        <img src="{{beerData.imageUrl}}" alt="Omar Dsoky">
+
+
+      
+        
+    <!-- 	product Information-->
+    <div class="info">
+        <h2>The Description</h2>
+        <ul>
+            <li><strong>ServingType: </strong>{{beerData.servingType}}</li>
+            <li><strong>Rating: </strong>{{beerData.rating}}</li>
+            <li><strong>Price: </strong>{{beerData.price}}</li>
+            <li><strong>Upvotes: </strong>{{beerData.upVotes}}</li>
+            <li><strong>Downvotes: </strong>{{beerData.downVotes}}</li>
+            <li><strong>Description: </strong>{{beerData.flavourDesc}}</li>
+        </ul>
+    </div>
+    </div>
+    <!--  End product image  -->
+    
+    
+    
+    
+    </div>
+   
