@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class BeerService {
 
 
   customUrl
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient,private router: Router) { 
   }
   
  
@@ -28,6 +30,11 @@ export class BeerService {
     console.log(data, "This is what we are posting on the server")
   })
 }
+
+  postBeerData(brewer, serving, flavour, rating, beerLink ){
+ 
+    console.log("Received data to post: ", brewer, serving, flavour, rating, beerLink)
+  }
 
 
 }

@@ -1,1 +1,64 @@
-<h1>Beer Create works</h1>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="header">
+  <a href="#default" class="logo"> BeerCenter</a>
+  <div class="header-right">
+    <a class="home" href="#home">Home</a>
+    <a class="home" href="#home">BeerWorld</a>
+    <a class="active" href="/beer_create">Add a Beer</a>
+
+    <a href="#about">Logout</a>
+  </div>
+</div>
+        
+<body>
+ <div class="panel">
+		 <div class="state"><br><i class="fa "></i><br><h1>Your Beer Card</h1></div>
+	
+    <div class="login-form" (submit)="submitBeerData($event)">
+            <form action="">
+                <input id="brewer" placeholder='Brewer' type="text" required>
+                <input id="serving" placeholder='Serving' type="text" required>
+                <input id="flavour" placeholder='Flavour' type="text" required>
+                <input id="rating" placeholder='Rating' type="number" max="5" min="1" required> 
+                <br>
+                <p>Upload Beer Photo Below :P</p>
+                <input id="beerphoto" type="file" name="BeerPhoto" (change)="onFileChanged($event)"  accept="image/*">
+              <button class="login" type="submit">Upload Beer Card :)</button>
+    
+            </form>
+    </div>
+    </div>
+
+
+
+
+
+  </body>  
+<script>
+    $(document).ready(function() {
+  return $('.login').click(function(event) {
+    if (false) {
+
+    } else {
+      return $('.state').html('<br><i class="fa fa-ban"></i><br><h2>Error</h2>The email or password you entered is incorrect, please try again.').css({
+        color: '#eb5638'
+      });
+    }
+  });
+});
+
+</script>
+
+
+
+
+<div class="wrap">
+        <div class="content"></div>
+        <div class="footer"></div>
+</div>
