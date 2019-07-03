@@ -3,6 +3,17 @@ from rest_framework import serializers
 from beer_platform.models import BeerCard
 from django.contrib.auth.models import User
 
+""" 
+  UserSerializer is used to serialize and deserialize the usermodel.
+  The model for this has been chosen according to the srs document.
+   Parameters: 
+   A standard Django Provided model Serializer
+
+   Returns: 
+   A model for the User.
+
+"""
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -13,7 +24,20 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
+
         return user
+
+
+""" 
+   BeerCardSerializer is used to serialize and deserialize the data.
+   The model for this has been chosen according to the srs document.
+    Parameters: 
+    A standard ModelSerializer
+
+    Returns: 
+    A model for the BeerCard
+
+"""
 
 
 class BeerCardSerializer(serializers.ModelSerializer):

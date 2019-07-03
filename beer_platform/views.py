@@ -17,6 +17,32 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
+""" 
+  BeerList is used to get the list of beers in the database
+  
+   Parameters: 
+   A standard API view
+   
+   Request
+   GET
+   http://127.0.0.1:8000/beer_list
+
+   Response: 
+   A response body of the form:
+   [
+             'pk',
+            'imageUrl',
+            'brewer',
+            'price',
+            'rating',
+            'servingType',
+            'flavourDesc',
+            'upVotes',
+            'downVotes',
+   ]
+
+"""
+
 class BeerList(APIView):
 
     def get(self, request):
@@ -24,10 +50,35 @@ class BeerList(APIView):
         serializer = BeerCardSerializer(beer_list, many=True)
         return Response(serializer.data)
 
-    def post(self):
-        pass
 
+""" 
+  BeerCardUpvoteView is used to upvote a particular beer card.
 
+   Parameters: 
+   A standard API view
+
+   Request
+   POST
+   http://127.0.0.1:8000/beer_upvote/{pk}
+   
+   eg:
+   http://127.0.0.1:8000/beer_upvote/2
+
+   Response: 
+   A response body of the form:
+   [
+             'pk',
+            'imageUrl',
+            'brewer',
+            'price',
+            'rating',
+            'servingType',
+            'flavourDesc',
+            'upVotes',
+            'downVotes',
+   ]
+
+"""
 class BeerCardUpvoteView(APIView):
 
     def post(self, request, pk):
@@ -43,7 +94,34 @@ class BeerCardUpvoteView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# PostAPI
+""" 
+  BeerCardDownVoteView is used to downvote a particular beer card.
+
+   Parameters: 
+   A standard API view
+
+   Request
+   POST
+   http://127.0.0.1:8000/beer_downvote/{pk}
+
+   eg:
+   http://127.0.0.1:8000/beer_downvote/2
+
+   Response: 
+   A response body of the form:
+   [
+             'pk',
+            'imageUrl',
+            'brewer',
+            'price',
+            'rating',
+            'servingType',
+            'flavourDesc',
+            'upVotes',
+            'downVotes',
+   ]
+
+"""
 class BeerCardDownvoteView(APIView):
 
     def post(self,request,pk):
@@ -59,6 +137,34 @@ class BeerCardDownvoteView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+""" 
+   IndividualBeerView is used to get information about a particular beer card.
+
+   Parameters: 
+   A standard API view
+
+   Request
+   POST
+   http://127.0.0.1:8000/beer/{pk}
+
+   eg:
+   http://127.0.0.1:8000/beer/2
+
+   Response: 
+   A response body of the form:
+   [
+             'pk',
+            'imageUrl',
+            'brewer',
+            'price',
+            'rating',
+            'servingType',
+            'flavourDesc',
+            'upVotes',
+            'downVotes',
+   ]
+
+"""
 class IndividualBeerView(APIView):
 
     def post(self, request,pk):
@@ -67,6 +173,48 @@ class IndividualBeerView(APIView):
         return Response(serializer.data)
 
 
+""" 
+   AddBeerView is used to upload a new Beer Card.
+
+   Parameters: 
+   A standard API view
+
+   Request
+   POST
+   http://127.0.0.1:8000/beer/data
+   
+   RequestBody
+   data = [
+   
+            'pk',
+            'imageUrl',
+            'brewer',
+            'price',
+            'rating',
+            'servingType',
+            'flavourDesc',
+            'upVotes',
+            'downVotes',
+      ]
+
+   eg:
+   http://127.0.0.1:8000/beer/data
+
+   Response: 
+   A response body of the form:
+   [
+            'pk',
+            'imageUrl',
+            'brewer',
+            'price',
+            'rating',
+            'servingType',
+            'flavourDesc',
+            'upVotes',
+            'downVotes',
+   ]
+
+"""
 class AddBeerView(APIView):
 
     def post(self, request):
@@ -88,6 +236,3 @@ class AddBeerView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
-# Form validation

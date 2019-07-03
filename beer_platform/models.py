@@ -3,6 +3,12 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager
 
 # Create your models here.
 
+""" 
+  BeerCard is the model chosen as per the user requirements.
+  The fields are pretty much self-explanatory:P
+
+"""
+
 
 class BeerCard(models.Model):
 
@@ -14,6 +20,8 @@ class BeerCard(models.Model):
     flavourDesc = models.TextField()
     upVotes = models.IntegerField()
     downVotes = models.IntegerField()
+
+# Required only if we wanted to get the fields as a string
 
 
 def __str__(self):
