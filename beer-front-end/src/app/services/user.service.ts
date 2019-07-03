@@ -4,8 +4,10 @@ import { Observable } from 'rxjs'
 import { Router } from '@angular/router';
 
 
+
 @Injectable()
 export class UserService {
+
 
   constructor(private http: HttpClient,private router: Router) { }
 
@@ -17,9 +19,26 @@ export class UserService {
       password
      }).subscribe(data => {
        console.log(data, "This is what we are posting on the server")
-       
-     })
+       this.router.navigate(['beer-list']);
+     }, 
 
+     (error) => { 
+       console.log(error)
+
+       if(error.error.email == "Enter a valid email address."){
+         alert("Kindly enter a valid email address")
+       }
+      else if(error.error.username == "A user with that username already exists."){
+        alert("This username already exists")
+      }else if (error.error.password == "This field may not be blank."){
+        alert("Kindly enter the password")
+      }
+      
+      this.router.navigate([''])
+     }
+     )
   }
+
+ 
 
 }

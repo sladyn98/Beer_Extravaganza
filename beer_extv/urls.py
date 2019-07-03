@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^user_list/', include('beer_platform.urls')),
     url(r'^beer_upvote/(?P<pk>\d+)/$', views.BeerCardUpvoteView.as_view()),
     url(r'^beer_downvote/(?P<pk>\d+)/$', views.BeerCardDownvoteView.as_view()),
+    url(r'^beer_add/$', views.AddBeerView.as_view())
 
 ]

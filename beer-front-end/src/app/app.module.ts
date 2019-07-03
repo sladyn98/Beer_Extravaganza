@@ -11,6 +11,7 @@ import { BeerListComponent } from './beer-list/beer-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { BeerComponent } from './beer/beer.component';
+import { DataUploadScreenComponent } from './data-upload-screen/data-upload-screen.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BeerComponent } from './beer/beer.component';
     BeerCreateComponent,
     BeerListComponent,
     LoginComponent,
-    BeerComponent
+    BeerComponent,
+    DataUploadScreenComponent
   ],
   imports: [
     BrowserModule,

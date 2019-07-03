@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../services/beer.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,21 +19,30 @@ export class BeerCreateComponent implements OnInit {
   responseData
   beerLink
   
-  constructor(private http: HttpClient,private beerService:BeerService) { }
+  constructor(private http: HttpClient,private beerService:BeerService,private router: Router) { }
 
   ngOnInit() {
   }
 
   submitBeerData(event){
     console.log("I want to create a beer")
+    
     event.preventDefault()
+    this.router.navigate(['loadscreen'])
     const target = event.target
     const brewer = target.querySelector('#brewer').value
     const serving = target.querySelector('#serving').value
     const flavour = target.querySelector('#flavour').value
     const rating = target.querySelector('#rating').value
+    const price = target.querySelector('#price').value
    
-    this.uploadData(brewer,serving,flavour,rating)
+
+    if(brewer == "" || serving == "" || flavour == "" || rating == "" || price == ""){
+      alert("Kindly enter all of the relevant details")
+      this.router.navigate(['beer-create'])
+      return
+    }
+    this.uploadData(brewer,serving,flavour,rating,price)
   }
 
   onFileChanged(event) {
@@ -41,7 +51,7 @@ export class BeerCreateComponent implements OnInit {
   }
 
 
-  uploadData(brewer,serving,flavour,rating){
+  uploadData(brewer, serving, flavour, rating, price){
     var beerImageLink;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -56,9 +66,15 @@ export class BeerCreateComponent implements OnInit {
     console.log("Response data", this.responseData['data']['link'])
     this.beerLink = this.responseData['data']['link']
 
-    this.beerService.postBeerData(brewer,serving,flavour,rating,this.beerLink)
+    this.beerService.postBeerData(brewer,serving,flavour,rating,this.beerLink,price)
+    this.router.navigate(['beer-list'])
     
-}, (error) => { console.error(error); })
+    }, 
+    (error) => { 
+      console.error(error);
+     }
+     
+     )
   
 
   }

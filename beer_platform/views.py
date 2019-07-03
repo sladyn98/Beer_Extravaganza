@@ -65,3 +65,29 @@ class IndividualBeerView(APIView):
         model = get_object_or_404(BeerCard, pk=pk)
         serializer = BeerCardSerializer(model)
         return Response(serializer.data)
+
+
+class AddBeerView(APIView):
+
+    def post(self, request):
+
+        data = {"imageUrl": request.data.get('imageUrl'),
+                "brewer": request.data.get('brewer'),
+                "price": request.data.get('price'),
+                "rating": request.data.get('rating'),
+                "servingType": request.data.get('servingType'),
+                "flavourDesc": request.data.get('flavourDesc'),
+                "upVotes": request.data.get('upVotes'),
+                "downVotes": request.data.get('downVotes')}
+
+        serializer = BeerCardSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+            # return a meaningful error response
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+# Form validation

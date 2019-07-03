@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BeerService } from '../services/beer.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 
 @Component({
   selector: 'app-beer-list',
   templateUrl: './beer-list.component.html',
   styleUrls: ['./beer-list.component.css'],
-  providers: [BeerService]
+  providers: [BeerService,UserService]
 
 })
 export class BeerListComponent implements OnInit {
@@ -19,7 +20,7 @@ export class BeerListComponent implements OnInit {
    data: {};
 
   constructor(private http: HttpClient,private beerService:BeerService,
-    private router: Router) {
+    private router: Router, private userService: UserService) {
     this.getBeerData()
    }
 
@@ -58,7 +59,13 @@ export class BeerListComponent implements OnInit {
     console.log("I want to create a beer")
     this.router.navigate(['beer-create']);
   }
+ 
+  logout(){
+    console.log("I want to logout")
+    localStorage.clear()
+    this.router.navigate(['']);
 
+  }
 
 
 

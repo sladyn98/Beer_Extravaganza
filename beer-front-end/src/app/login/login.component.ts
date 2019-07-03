@@ -19,17 +19,26 @@ export class LoginComponent implements OnInit {
   ngOnInit(){
     
   }
-  
-  // Catch username already exists error
-  loginUser(event) {
+
+
+   loginUser(event) {
    event.preventDefault()
+   this.router.navigate(['loadscreen']);
    const target = event.target
    const username = target.querySelector('#username').value
    const email = target.querySelector('#email').value
    const password = target.querySelector("#password").value
+
+   if(username == "" || email == "" || password == ""){
+     alert("Kindly enter username, password and email")
+     this.router.navigate([''])
+     return
+   }
+  
    console.log("Sending data from component")
+   localStorage.setItem("currentUser",username)
    this.userService.loginUser(username,email,password)
-   this.router.navigate(['beer-list']);
+   
   }
 
 
