@@ -12,6 +12,8 @@ export class BeerComponent implements OnInit {
 
   primaryKey;
   apiUrl;
+
+  // One way data binding used. This is set later with the data from the server
   beerData=null;
   beerId;
   
@@ -25,6 +27,11 @@ export class BeerComponent implements OnInit {
   ngOnInit() {
   }
 
+/* 
+  getIndividualBeerData() takes in the beerID(pk) and 
+  makes a post to the backend server.
+  Sets the local beerData with the data from the server
+*/
   getIndividualBeerData(beerId){
      this.apiUrl = "http://127.0.0.1:8000/beer/" + beerId + "/"
      console.log(this.apiUrl)

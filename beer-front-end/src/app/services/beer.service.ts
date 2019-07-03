@@ -16,7 +16,10 @@ export class BeerService {
   constructor(private http: HttpClient,private router: Router) { 
   }
   
- 
+ /* 
+  upVoteBeerCard() takes in the beerCardId rather the pk
+  and makes a post to the server to increase the upvote count.
+*/
   upVoteBeerCard(pk){
     this.upVoteUrl = 'http://127.0.0.1:8000/beer_upvote/' + pk + '/'
     return this.http.post(this.upVoteUrl,{
@@ -25,6 +28,9 @@ export class BeerService {
     })
  }
  
+ /* 
+  Same functionality as the upvoteBeerCard but increases the downvote count.
+*/
   downVoteBeerCard(pk){
   this.downVoteUrl = 'http://127.0.0.1:8000/beer_downvote/' + pk + '/'
   return this.http.post(this.downVoteUrl,{
@@ -33,10 +39,14 @@ export class BeerService {
   })
 }
 
+/* 
+  postBeerData takes in all the parameters required to construct a
+  beerCard such as the brewer, serving, flavour, rating, beerLink
+  price and constructs the beerData object.
+  Posts the data to the beer_add api
+*/
   postBeerData(brewer, serving, flavour, rating, beerLink, price ){
- 
     console.log("Received data to post: ", brewer, serving, flavour, rating, beerLink, price)
-
     var beerData = 
                      {
                          "imageUrl":beerLink,
