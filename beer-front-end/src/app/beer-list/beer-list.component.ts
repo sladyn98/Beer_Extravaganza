@@ -26,7 +26,6 @@ export class BeerListComponent implements OnInit {
    }
 
   ngOnInit() {
-    location.reload();
   }
   /* 
   getBeerData() gets the required beer data and stores it in a local data variable
